@@ -794,7 +794,7 @@ module Meilisearch
       def ms_ensure_init(options = meilisearch_options, settings = meilisearch_settings, user_configuration = settings.to_settings)
         raise ArgumentError, 'No `meilisearch` block found in your model.' if meilisearch_settings.nil?
 
-        @ms_indexes ||= { true => {}, false => {} }
+        @ms_indexes = { true => {}, false => {} }
 
         @ms_indexes[Meilisearch::Rails.active?][settings] ||= SafeIndex.new(ms_index_uid(options), meilisearch_options[:raise_on_failure], meilisearch_options)
 
