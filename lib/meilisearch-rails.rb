@@ -723,6 +723,8 @@ module Meilisearch
           if o
             o.formatted = hit['_formatted']
             o
+          elsif meilisearch_options[:type].respond_to?(:meili_record_template)
+            meilisearch_options[:type].meili_record_template(hit)
           end
         end.compact
 
