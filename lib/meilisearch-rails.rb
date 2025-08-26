@@ -791,8 +791,6 @@ module Meilisearch
         options[:primary_key] || options[:id] || (Utilities.mongo_model?(self) ? :_id : :id)
       end
 
-      protected
-
       def ms_ensure_init(options = meilisearch_options, settings = meilisearch_settings, user_configuration = settings.to_settings)
         raise ArgumentError, 'No `meilisearch` block found in your model.' if meilisearch_settings.nil?
 
@@ -804,8 +802,6 @@ module Meilisearch
 
         @ms_indexes[Meilisearch::Rails.active?][settings]
       end
-
-      private
 
       def update_settings_if_changed(index, options, user_configuration)
         server_state = index.settings
